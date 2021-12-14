@@ -1,0 +1,143 @@
+package com.company;
+ 
+public class Book {
+    private String title, author;
+ 
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+ 
+    public String getTitle() {
+        return title;
+    }
+ 
+    public String getAuthor() {
+        return author;
+    }
+ 
+    public String toString() {
+        return author + " " + title;
+    }
+}
+ 
+ 
+ 
+ 
+package com.company;
+ 
+public class Reader {
+    private String name, city;
+ 
+    public Reader(String name, String city) {
+        this.name = name;
+        this.city = city;
+    }
+ 
+    public String getName() {
+        return name;
+    }
+ 
+    public String getCity() {
+        return city;
+    }
+ 
+    public String toString() {
+        return name + " " + city;
+    }
+}
+ 
+ 
+ 
+ 
+package com.company;
+ 
+import java.util.ArrayList;
+ 
+public class Library {
+    private ArrayList<Book> booksList;
+    private ArrayList<Reader> readersList;
+ 
+    public Library() {
+        booksList = new ArrayList<>();
+        readersList = new ArrayList<>();
+    }
+ 
+    public void addBook(Book book) {
+        booksList.add(book);
+    }
+ 
+    public void addReader(Reader reader){
+        readersList.add(reader);
+    }
+ 
+    //użyj:
+    // for(Book book: booksList) {
+    //  System.out.println(book);
+    // }
+    public Book findBook(String title) {
+        for(Book book: booksList) {
+            if(book.getTitle().equals(title)){
+                return book;
+            }
+        }
+        return null;
+    }
+ 
+    public ArrayList<Book> findBooks(String title) {
+        ArrayList<Book> list = new ArrayList();
+ 
+        for(Book book: booksList) {
+            if(book.getTitle().equals(title)){
+                list.add(book);
+            }
+        }
+        return list;
+    }
+ 
+    public ArrayList<Reader> findReaders(String name) {
+        ArrayList<Reader> list = new ArrayList();
+        for (Reader reader : readersList) {
+            if (reader.getName().equals(name)) {
+                list.add(reader);
+            }
+ 
+        }
+        return list;
+    }
+ 
+    public Reader findReader(String name) {
+        for(Reader reader: readersList) {
+            if(reader.getName().equals(name)){
+                return reader;
+            }
+        }
+        return null;
+    }
+ 
+}
+ 
+ 
+ 
+ 
+package com.company;
+ 
+import java.util.ArrayList;
+ 
+public class Main {
+ 
+    public static void main(String[] args) {
+ 
+        Library library = new Library();
+ 
+        library.addBook(new Book("title1", "author1"));
+        library.addBook(new Book("title2", "author2"));
+        library.addBook(new Book("title2", "author3"));
+ 
+        ArrayList<Book> result = library.findBooks("title5");
+        System.out.println(result);
+ 
+ 
+    }
+}
+ 
